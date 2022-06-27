@@ -12,6 +12,13 @@ def index(request: HttpRequest) -> HttpResponse:
     response.status_code = 200
     return response
 
+def template_example(request: HttpRequest) -> HttpResponse:
+    context = {
+        "exams": Exam.objects.all(),
+    }
+
+    return render(request, 'example.html', context)
+
 def exams(request: HttpRequest) -> HttpResponse:
     exams = Exam.objects.all()
     
