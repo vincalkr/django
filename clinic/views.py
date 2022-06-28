@@ -14,7 +14,8 @@ def index(request: HttpRequest) -> HttpResponse:
 
 def template_example(request: HttpRequest) -> HttpResponse:
     context = {
-        "exams": Exam.objects.all(),
+        "exams_count": Exam.objects.count(),
+        "10exams": Exam.objects.all()[0:10],
     }
 
     return render(request, 'example.html', context)

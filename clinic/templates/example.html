@@ -12,12 +12,17 @@
         <div class="grid-cols-5 bg-black p-3">
                 <h1 class="text-white font-bold text-md">Statistiche</h1>
             <span class="text-white">
-                Numero esami: {{ exams.count }}
+                Numero esami: {{ exams_count }}
             </span>
         </div>
         <div class="grid-cols-5 bg-red-500 p-3">
             <h1 class="text-white font-bold text-md">Dettagli</h1>
-            
+            {% for exam in 10exams %}
+                <span class="text-white">
+                    {{ exam.name }} 
+                    {% if 10 %}
+                </span>
+            {% endfor %}
         </div>
      </div>
     </article>
