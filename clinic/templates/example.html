@@ -20,7 +20,9 @@
             {% for exam in 10exams %}
                 <span class="text-white">
                     {{ exam.name }} 
-                    {% if 10 %}
+                    {% if forloop.counter > 0 and not forloop.last %}
+                       ,
+                    {% endif %}
                 </span>
             {% endfor %}
         </div>
