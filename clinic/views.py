@@ -25,7 +25,7 @@ def exams(request: HttpRequest) -> HttpResponse:
     
     return HttpResponse(serializers.serialize('json', exams), content_type='application/json')
 
-def exams_detail(request: HttpRequest, id: int) -> HttpResponse:
-    exam: Exam = get_object_or_404(Exam, pk=id)
+def exam_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    exam: Exam = get_object_or_404(Exam, pk=pk)
     
     return HttpResponse(json.dumps(model_to_dict(exam)), content_type='application/json')

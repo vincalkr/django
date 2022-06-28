@@ -19,7 +19,7 @@
             <h1 class="text-white font-bold text-md">Dettagli</h1>
             {% for exam in 10exams %}
                 <span class="text-white">
-                    {{ exam.name }} 
+                   <a class="" href="{{ exam.get_absolute_url }}">{{ exam.name }}</a> 
                     {% if forloop.counter > 0 and not forloop.last %}
                        ,
                     {% endif %}
