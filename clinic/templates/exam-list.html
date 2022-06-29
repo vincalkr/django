@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block page_title %}
+Lista esami 
+{% endblock page_title %}
+
+{% block content %}
+<article class="mx-auto container h-full py-2">
+
+   {% for exam in object_list %}
+    <div class="p-5 bg-gray-200 w-52 my-3 w-full rounded-md shadow-md hover:bg-gray-100 cursor-pointer">
+         {{ exam.name }}
+         <p class="text-sm">{{ exam.description }}</p>
+    </div>
+   {% endfor %}
+   </article>
+{% endblock content %}
