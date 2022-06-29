@@ -1,32 +1,29 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistiche</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
-</head>
-<body>
-    <article class="container m-auto">
-     <div class="grid grid-flow-col">
-        <div class="grid-cols-5 bg-black p-3">
-                <h1 class="text-white font-bold text-md">Statistiche</h1>
-            <span class="text-white">
-                Numero esami: {{ exams_count }}
-            </span>
-        </div>
-        <div class="grid-cols-5 bg-red-500 p-3">
-            <h1 class="text-white font-bold text-md">Dettagli</h1>
-            {% for exam in 10exams %}
-                <span class="text-white">
-                   <a class="" href="{{ exam.get_absolute_url }}">{{ exam.name }}</a> 
-                    {% if forloop.counter > 0 and not forloop.last %}
-                       ,
-                    {% endif %}
-                </span>
-            {% endfor %}
-        </div>
-     </div>
-    </article>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block page_title %}
+Statistiche 
+{% endblock page_title %}
+
+{% block content %}
+<article class="container m-auto">
+    <div class="grid grid-flow-col">
+       <div class="grid-cols-5 bg-black p-3">
+               <h1 class="text-white font-bold text-md">Statistiche</h1>
+           <span class="text-white">
+               Numero esami: {{ exams_count }}
+           </span>
+       </div>
+       <div class="grid-cols-5 bg-red-500 p-3">
+           <h1 class="text-white font-bold text-md">Dettagli</h1>
+           {% for exam in 10exams %}
+               <span class="text-white">
+                  <a class="" href="{{ exam.get_absolute_url }}">{{ exam.name }}</a> 
+                   {% if forloop.counter > 0 and not forloop.last %}
+                      ,
+                   {% endif %}
+               </span>
+           {% endfor %}
+       </div>
+    </div>
+   </article>
+{% endblock content %}
