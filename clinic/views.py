@@ -5,7 +5,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
 
-from clinic.models import Exam
+from clinic.models import Exam, Patient, Reservation
 
 def index(request: HttpRequest) -> HttpResponse:
     response = HttpResponse()
@@ -31,7 +31,18 @@ def exam_detail_json(request: HttpRequest, pk: int) -> HttpResponse:
     
     return HttpResponse(json.dumps(model_to_dict(exam)), content_type='application/json')
 
+def get_reservations(request: HttpRequest) -> HttpResponse:
+    # reservations = Reservation.objects.all()
+    patient = Patient(id=1)
+    reservations = patient.reservations.all()
+    return HttpResponse(serializers.serialize('json', reservations), content_type='application/json')
+
 ## Test con class based views
 class ExamListView(ListView):
     model = Exam
     template_name = 'exam-list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['exams'] = Exam.objects.all()
+        return context

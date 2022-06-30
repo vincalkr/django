@@ -27,7 +27,7 @@ class Exam(models.Model):
         return self.name
 
 class Reservation(models.Model):
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE, related_name='reservations')
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
@@ -36,3 +36,7 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.patient.name + " - " + self.exam.name
+
+    # class Meta: 
+    #     verbose_name = 'Reservation'
+    #     verbose_name_plural = 'Reservations'
