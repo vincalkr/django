@@ -7,20 +7,6 @@ from django.views.generic.list import ListView
 
 from clinic.models import Exam, Patient, Reservation
 
-def index(request: HttpRequest) -> HttpResponse:
-    response = HttpResponse()
-    response.content = "Hello, world!"
-    response.status_code = 200
-    return response
-
-def template_example(request: HttpRequest) -> HttpResponse:
-    context = {
-        "exams_count": Exam.objects.count(),
-        "10exams": Exam.objects.all()[0:10],
-    }
-
-    return render(request, 'example.html', context)
-
 def exams_json(request: HttpRequest) -> HttpResponse:
     exams = Exam.objects.all()
     
@@ -30,12 +16,6 @@ def exam_detail_json(request: HttpRequest, pk: int) -> HttpResponse:
     exam: Exam = get_object_or_404(Exam, pk=pk)
     
     return HttpResponse(json.dumps(model_to_dict(exam)), content_type='application/json')
-
-def get_reservations(request: HttpRequest) -> HttpResponse:
-    # reservations = Reservation.objects.all()
-    patient = Patient(id=1)
-    reservations = patient.reservations.all()
-    return HttpResponse(serializers.serialize('json', reservations), content_type='application/json')
 
 ## Test con class based views
 class ExamListView(ListView):
