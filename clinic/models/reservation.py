@@ -9,7 +9,7 @@ class Reservation(models.Model):
     exam = models.ForeignKey(Exam, on_delete=models.CASCADE)
     date = models.DateField()
     time = models.TimeField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):

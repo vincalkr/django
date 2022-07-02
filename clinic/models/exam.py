@@ -5,7 +5,7 @@ class Exam(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     price = models.FloatField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
 
     def get_absolute_url(self):
