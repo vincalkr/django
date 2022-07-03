@@ -1,5 +1,5 @@
 import strawberry_django
-from strawberry import auto
+from strawberry import LazyType, auto
 from typing import List
 from . import models
 
@@ -20,6 +20,7 @@ class Patient:
     phone: auto
     address: auto
     email: auto
+    reservations: List[LazyType["Reservation", __name__]]
     created_at: auto
     updated_at: auto
 
