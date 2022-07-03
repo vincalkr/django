@@ -1,3 +1,5 @@
-from .root import *
-from .exam import *
-from .reservation import *
+from . import root
+from . import exam
+from . import reservation
+
+__all__ = ['root', 'exam', 'reservation']
