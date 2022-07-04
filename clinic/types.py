@@ -11,6 +11,10 @@ class Exam:
     price: auto
     created_at: auto
     updated_at: auto
+    
+    @strawberry_django.field
+    def author(self) -> str:
+        return self.author;
 
 @strawberry_django.type(models.Patient, description="Patient type")
 class Patient:
