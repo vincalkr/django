@@ -4,7 +4,6 @@ from django.forms import model_to_dict
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.views.generic.list import ListView
-
 from .. import models
 
 def exams_json(request: HttpRequest) -> HttpResponse:
