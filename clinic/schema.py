@@ -3,7 +3,7 @@ from typing import List
 import strawberry_django
 from . import types
 
-@strawberry.type
+@strawberry.type(description="Querable items")
 class Query:
     exam: types.Exam = strawberry_django.field()
     exams: List[ types.Exam] = strawberry_django.field()

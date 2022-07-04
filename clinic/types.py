@@ -27,7 +27,7 @@ class Patient:
 @strawberry_django.type(models.Reservation, description="Reservation type")
 class Reservation:
    id: auto
-   patient: Patient
+   patient: LazyType["Patient", __name__]
    exam: Exam
    date: auto
    time: auto
