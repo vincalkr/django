@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import pre_save
 from django.urls import reverse
 
 class Patient(models.Model):
@@ -10,5 +11,14 @@ class Patient(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True)
 
+    # def save(self, *args, **kwargs):
+    #     print("Save method overridden")
+    #     super().save(*args, **kwargs)
+
     def __str__(self):
         return self.name
+
+def pre_save_patient(sender, instance, **kwargs):
+    print("Pre save patient")
+
+pre_save.connect(pre_save_patient, sender=Patient)
