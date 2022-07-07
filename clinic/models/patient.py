@@ -18,6 +18,7 @@ class Patient(models.Model):
     def __str__(self):
         return self.name
 
+''' Pre save hook'''
 def pre_save_patient(sender, instance, **kwargs):
     print("Pre save patient")
 
